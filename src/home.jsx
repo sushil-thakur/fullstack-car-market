@@ -3,14 +3,17 @@ import { Button } from './components/ui/button'
 import {  SignInButton } from '@clerk/clerk-react'
 import Header from './components/Header'
 import Hero from './components/Hero'
+import Category from './components/Category'
 
 function home() {
   return (
-    <div>
+    <div >
       {/*Header */}
       <Header/>
       {/* {hero} */}
       <Hero/>
+      {/* {category} */}
+      <Category/>
     </div>
   )
 }
