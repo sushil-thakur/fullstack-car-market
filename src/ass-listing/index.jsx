@@ -1,5 +1,8 @@
 import React from 'react'
 import Header from '@/components/Header'
+import carDetails from './../Shared/carDetails.json'
+import InputField from './components/InputField'
+import DropDownField from './components/DropDownField'
 function AddListing() {
   return (
     <div>
@@ -10,7 +13,21 @@ function AddListing() {
              {/* {   Car Details} */}
              <div>
                 <h2 className='font-medium text-xl mb-6'>Car Details</h2>
+                <div className='grid grid-cols-2 gap-5'>
+                  {carDetails.carDetails.map((item,index)=>(
+                    <div key={index}>
+                      <label className='text-sm'>{item?.label} {item.required&&<span className='text-red-500'>*</span>}</label>
+        {(item.fieldType === 'text' || item.fieldType === 'number') ? (
+          <InputField item={item}/>
+        ) : item.fieldType === 'dropdown' && item.options ? (
+          <DropDownField item={item}/>
+        ) : null}
+
+      </div>
+                  ))}
+                </div>
              </div>
+             
 
              {/* {features List} */}
 
