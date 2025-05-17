@@ -10,7 +10,7 @@ import Profile from './profile'
 import AddListing from './ass-listing'
 const router=createBrowserRouter([
   {
-    path:'/home',
+    path:'/',
     element:<Home/>
   },
   {

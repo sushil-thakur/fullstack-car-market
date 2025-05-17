@@ -13,13 +13,13 @@ function DropDownField({ item }) {
   return (
     <div>
       <Select>
-        <SelectTrigger className="w-full">
+        <SelectTrigger className="w-full !bg-white !text-black border border-gray-300">
           <SelectValue placeholder={item.label} />
         </SelectTrigger>
-        <SelectContent>
-          {item?.options?.map((option, index) => (
-            <SelectItem  value={option}>{option}</SelectItem>
-          ))}
+        <SelectContent  className="bg-white text-black" >
+        {item?.options?.map((option, index) => (
+  <SelectItem key={index} value={option}>{option}</SelectItem>
+))}
         </SelectContent>
       </Select>
     </div>
