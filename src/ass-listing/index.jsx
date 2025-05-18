@@ -3,12 +3,14 @@ import Header from '@/components/Header'
 import carDetails from './../Shared/carDetails.json'
 import InputField from './components/InputField'
 import DropDownField from './components/DropDownField'
-import { Textarea } from '@/components/ui/textarea'
+import TextAreaField from './components/TextAreaField'
 import { Separator } from '@radix-ui/react-select'
 import features  from "./../Shared/features.json"
 // import { Checkbox } from "@/components/ui/checkbox"
 import { Checkbox } from './components/Checkbox'
 import { Button } from '@/components/ui/button'
+import { db } from './../../configs'
+import { CarListing } from "../../configs/schema"
 
 function AddListing() {
   const [formData,setFormData]=useState([]);
@@ -18,6 +20,18 @@ function AddListing() {
       [name]: value
     }));
     console.log(formData);
+  }
+  const onsubmit =async (e) => {
+    e.preventDefault();
+    console.log(formData);
+    try{
+    const result=await db.insert(CarListing).values(formData);
+    if(result){
+      console.log("data saved")
+    }
+  }catch(e){
+    console.log("error",e)
+  }
   }
   return (
     <div>
@@ -38,8 +52,9 @@ function AddListing() {
           <DropDownField item={item}
           handleInputChange={handleInputChange}/>
         ) 
-        :item.fieldType=='textarea'?<Textarea item={item}
-        handleInputChange={handleInputChange}/>
+          : item.fieldType === 'textarea' ? (
+          <TextAreaField item={item} handleInputChange={handleInputChange} />
+        )
         : null}
 
       </div>
@@ -55,9 +70,9 @@ function AddListing() {
               <div className='grid grid-cols-2 md:grid-cols-3 gap-2'>
                 {features.features.map((item,index)=>(
                   <div key={index} className='flex gap-2 items-center'>
-                    <Checkbox
+                    <Checkbox onCheckedChange={(value) => handleInputChange(item.name, value)}
                  className="!bg-white !text-black border-[2px] border-[rgb(0,123,255)] data-[state=checked]:bg-blue-500 data-[state=checked]:text-white"
-  style={{ border: "2px solid rgb(0, 123, 255)" }}
+   style={{ border: "2px solid rgb(0, 123, 255)" }}
 />
                     <h2>{item.label}</h2>
 
@@ -68,7 +83,7 @@ function AddListing() {
 
              {/* {car Image} */}
              <div className='mt-10 flex justify-end bg-blur'>
-              <Button className="!bg-blue-400">Submit</Button>
+              <Button type="submit" onClick={(e)=>onsubmit(e)} className="!bg-blue-400">Submit</Button>
              </div>
             </form>
         </div>

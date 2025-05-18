@@ -7,12 +7,13 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 
-function DropDownField({ item }) {
+function DropDownField({ item, handleInputChange }) {
  
 
   return (
     <div>
-      <Select>
+      <Select onValueChange={(value)=>handleInputChange(item.name, value)}
+        required={item.required}>
         <SelectTrigger className="w-full !bg-white !text-black border border-gray-300">
           <SelectValue placeholder={item.label} />
         </SelectTrigger>
