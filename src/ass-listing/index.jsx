@@ -12,6 +12,7 @@ import { Button } from '@/components/ui/button'
 import { db } from './../../configs'
 import { CarListing } from "../../configs/schema"
 import IconField from './components/IconField'
+import UploadImages from './components/UploadImages'
 
 function AddListing() {
   const [formData,setFormData]=useState([]);
@@ -102,6 +103,8 @@ function AddListing() {
              </div>
 
              {/* {car Image} */}
+             <Separator className='my-6'/>
+             <UploadImages/>
              <div className='mt-10 flex justify-end bg-blur'>
               <Button type="submit" onClick={(e)=>onsubmit(e)} className="!bg-blue-400">Submit</Button>
              </div>
