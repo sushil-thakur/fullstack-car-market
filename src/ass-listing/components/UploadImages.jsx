@@ -6,8 +6,8 @@ function UploadImages() {
         <h2 className='font-medium text-xl my-3'>Upload Car Image</h2>
         <div className='grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6'>
             <label htmlFor='upload-images'>
-<div className='border rounded-xl border-dotted border-blue-400 bg-blue-100 p-10'>
-    <h2 className='text-lg'>
+<div className='border rounded-xl border-dotted border-blue-400 bg-blue-100 p-10 cursor-pointer'>
+    <h2 className='text-lg text-center text-blue-400'>
         +
     </h2>
 </div>
