@@ -25,6 +25,7 @@
     "drizzle-orm": "^0.43.1",
     "embla-carousel-react": "^8.6.0",
     "firebase": "^11.8.1",
+    "gitignore": "^0.7.0",
     "lucide-react": "^0.508.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
