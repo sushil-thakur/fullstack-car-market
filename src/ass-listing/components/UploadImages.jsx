@@ -1,3 +1,6 @@
+import { Button } from '@/components/ui/button';
+import { Upload } from 'lucide-react';
+import { snapshot } from 'node:test';
 import React, { useState } from 'react'
 import { IoIosCloseCircle } from "react-icons/io";
 
@@ -14,6 +17,23 @@ function UploadImages() {
   const onImageRemove = (image, index) => {
     const result = selectedFileList.filter((item) => item !== image);
     setSelectedFileList(result);
+  }
+    const UploadImages=()=>{
+      selectedFileList.forEach((file)=>{
+        const fileName=Date.now()+".jpeg";
+        const StorageRef=ref(Storage,'car marketplace/'+fileName);
+        const metaData={
+          contentType:'image/jpeg'
+        }
+        UploadBytes(StorageRef, file,metaData).then((snapshot)=>{
+          console.log("uploaded File")
+        }).then(resp=>{
+          getDownloadURL(StorageRef).then(async(downloadUrl)=>{
+            console.log(downloadUrl);
+          })
+        })
+      })
+    
   }
   return (
     <div>
@@ -41,6 +61,7 @@ function UploadImages() {
             
             className='opacity-0'/>
         </div>
+        <Button onClick={UploadImages}>Uplaod image</Button>
     </div>
   )
 }
