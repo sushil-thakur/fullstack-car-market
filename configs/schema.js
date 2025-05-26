@@ -26,7 +26,9 @@ export const CarListing = pgTable('carListing', {
   vin: varchar('vin', { length: 100 }),
   offerType: varchar('offerType', { length: 50 }),
   listingDescription: text('listingDescription').notNull(),
-  features:json('features')
+  features:json('features'),
+  CreatedBy:varchar('createdBy') .notNull(),
+  postedOn:varchar('postedOn')
 });
 export const CarImages=pgTable('carImages',{
   id:serial('id').primaryKey(),
