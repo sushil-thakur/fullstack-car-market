@@ -65,13 +65,14 @@ function AddListing() {
       setUploadedUrls(imageUrls);
       console.log("Uploaded image URLs:", imageUrls);
 
-      const result = await db.insert(CarListing).values({
-        ...formData,
-        features: featuresData,
-        images: imageUrls,
-        createdBy: user?.primaryEmailAddress?.emailAddress,
-        postedOn:moment().format('DD/MM/YYYY')
-      }).returning({ id: CarListing.id });
+   const result = await db.insert(CarListing).values({
+  ...formData,
+  features: featuresData,
+  images: imageUrls,
+  createdBy: user.id,
+  email: user.primaryEmailAddress.emailAddress,
+  postedOn: moment().format('DD/MM/YYYY')
+}).returning({ id: CarListing.id });
       if (result) {
         console.log("data saved");
       }

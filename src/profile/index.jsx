@@ -9,15 +9,21 @@ function Profile() {
     <div>
       <Header/>
       <div className='pz-10 md:20 my-10'>
-        <Tabs defaultValue="account" className="w-[400px]">
-          <TabsList>
-            <TabsTrigger value="account">Account</TabsTrigger>
-            <TabsTrigger value="password">Password</TabsTrigger>
+        <Tabs defaultValue="my-listing" className="w-full">
+          <TabsList className="w-full flex justify-start">
+            <TabsTrigger value="my-listing">My Listing</TabsTrigger>
+            <TabsTrigger value="inbox">Inbox</TabsTrigger>
+            <TabsTrigger value="profile">Profile</TabsTrigger>
           </TabsList>
-          <TabsContent value="account">Make changes to your account here.</TabsContent>
-          <TabsContent value="password">Change your password here.</TabsContent>
+          <TabsContent value="my-listing" >
+             <MyListing/>
+
+          </TabsContent>
+          <TabsContent value="inbox">Inbox Tab</TabsContent>
+          <TabsContent value="profile">Profile Tab</TabsContent>
+
         </Tabs>
-        <MyListing/>
+       
      
       </div>
 
