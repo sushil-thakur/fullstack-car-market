@@ -69,7 +69,7 @@ function AddListing() {
   ...formData,
   features: featuresData,
   images: imageUrls,
-  createdBy: user.id,
+  CreatedBy: user.id,
   email: user.primaryEmailAddress.emailAddress,
   postedOn: moment().format('DD/MM/YYYY')
 }).returning({ id: CarListing.id });
